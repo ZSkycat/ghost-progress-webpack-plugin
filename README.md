@@ -1,0 +1,1 @@
+# ghost-progress-webpack-plugin
