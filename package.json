@@ -1,0 +1,46 @@
+{
+    "name": "ghost-progress-webpack-plugin",
+    "version": "0.0.0",
+    "author": "ZSkycat",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ZSkycat/ghost-progress-webpack-plugin"
+    },
+    "license": "MIT",
+    "description": "A progress plugin for webpack that can be used with other tools.",
+    "keywords": [
+        "webpack",
+        "plugin",
+        "progress",
+        "ghost"
+    ],
+    "main": "./dist/index.js",
+    "files": [
+        "./dist/",
+        "./src/"
+    ],
+    "scripts": {
+        "clear": "rimraf ./dist/**/*",
+        "build": "npm run clear && tsc -p .",
+        "test": "mocha --require ts-node/register ./test/**/*"
+    },
+    "dependencies": {
+        "chalk": "^2.0.0",
+        "cjk-regex": "^2.0.0",
+        "cli-cursor": "^2.0.0"
+    },
+    "devDependencies": {
+        "@types/mocha": "^5.2.4",
+        "@types/node": "^10.5.1",
+        "@types/webpack": "^4.4.4",
+        "mocha": "^5.2.0",
+        "rimraf": "^2.6.2",
+        "ts-node": "^7.0.0",
+        "tsc": "^1.20150623.0",
+        "typescript": "^2.9.2",
+        "webpack": "^4.14.0"
+    },
+    "peerDependencies": {
+        "webpack": ">=3.0.0"
+    }
+}
