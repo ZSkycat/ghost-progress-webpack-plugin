@@ -1,6 +1,6 @@
 {
     "name": "ghost-progress-webpack-plugin",
-    "version": "0.0.0",
+    "version": "0.0.2",
     "author": "ZSkycat",
     "repository": {
         "type": "git",
@@ -16,13 +16,13 @@
     ],
     "main": "./dist/index.js",
     "files": [
-        "./dist/",
-        "./src/"
+        "dist/",
+        "src/"
     ],
     "scripts": {
         "clear": "rimraf ./dist/**/*",
-        "build": "npm run clear && tsc -p .",
-        "test": "mocha --require ts-node/register ./test/**/*"
+        "test": "mocha --require ts-node/register ./test/**/*",
+        "build": "npm run clear && tsc -p ."
     },
     "dependencies": {
         "chalk": "^2.0.0",
@@ -32,13 +32,13 @@
     "devDependencies": {
         "@types/mocha": "^5.2.4",
         "@types/node": "^10.5.1",
-        "@types/webpack": "^4.4.4",
+        "@types/webpack": "^4.4.5",
         "mocha": "^5.2.0",
         "rimraf": "^2.6.2",
         "ts-node": "^7.0.0",
         "tsc": "^1.20150623.0",
         "typescript": "^2.9.2",
-        "webpack": "^4.14.0"
+        "webpack": "^4.15.1"
     },
     "peerDependencies": {
         "webpack": ">=3.0.0"
