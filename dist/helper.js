@@ -26,7 +26,7 @@ class Helper {
     }
     clearAll() {
         for (let i = 0; i < this.yLength; i++) {
-            this.moveCursor(0, 1);
+            this.stream.write('\n'); // 当光标位于最底部时, moveCursor(0, 1) 无效
             this.clearLine(0);
         }
         this.moveCursor(0, -this.yLength);
@@ -56,8 +56,8 @@ class Helper {
     beginWrite() {
         this.clearAll();
         this.xLength = 0;
-        this.yLength = 0;
-        this.write('\n'); // 当光标位于最底部时, moveCursor(0, 1) 无效
+        this.yLength = 1;
+        this.stream.write('\n');
     }
     endWrite() {
         this.moveCursor(0, -this.yLength);
@@ -187,7 +187,7 @@ function handleStdoutWrite() {
             let result = parseDisplayLength(str, 0, stream.columns);
             readline.clearLine(stream, 1);
             for (let i = 0; i < result.yLength; i++) {
-                readline.moveCursor(stream, 0, 1);
+                stream.write('\n');
                 readline.clearLine(stream, 0);
             }
             readline.moveCursor(stream, 0, -result.yLength);

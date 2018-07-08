@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import c from 'chalk';
 import { Helper } from './helper';
 
 const spinner = ['-', '\\', '|', '/'];
@@ -9,12 +9,12 @@ function createBarStr(percent: number, length: number = 100, fgColor: string = '
     }
     let fgLength = Math.round(percent * length);
     let bgLength = length - fgLength;
-    return chalk[fgColor](' '.repeat(fgLength)) + chalk[bgColor](' '.repeat(bgLength));
+    return c[fgColor](' '.repeat(fgLength)) + c[bgColor](' '.repeat(bgLength));
 }
 
 function createSpinnerStr(index: number, color: string = 'cyan') {
     index = index % spinner.length;
-    return chalk[color](spinner[index]);
+    return c[color](spinner[index]);
 }
 
 // format:

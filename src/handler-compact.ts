@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import c from 'chalk';
 import { Helper } from './helper';
 
 // format:
@@ -12,9 +12,9 @@ export default function() {
         helper.beginWrite();
         if (percentage != 1) {
             let details = [moduleProgress, activeModules, moduleName].filter(x => x != undefined).join(' :: ');
-            if (details.length > 0) details = chalk.gray(` (${details})`);
+            if (details.length > 0) details = c.gray(` (${details})`);
             helper.write('\n');
-            helper.write(chalk.cyan(`[${(percentage * 100).toFixed(2)}%]`) + ` ${msg}` + details, 1);
+            helper.write(c.cyan(`[${(percentage * 100).toFixed(2)}%]`) + ` ${msg}` + details, 1);
         }
         helper.endWrite();
     };

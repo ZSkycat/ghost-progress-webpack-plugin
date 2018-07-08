@@ -2,7 +2,7 @@ import * as webpack from 'webpack';
 
 export type GhostProgressFormat = 'compact' | 'detailed' | 'bar';
 
-export interface GhostProgressPluginType {
+export interface GhostProgressConstructor {
     new (): webpack.ProgressPlugin;
     new (format: GhostProgressFormat): webpack.ProgressPlugin;
 }
@@ -22,4 +22,4 @@ export const GhostProgressPlugin = (function(arg?: GhostProgressFormat) {
             break;
     }
     return new webpack.ProgressPlugin(handler);
-} as any) as GhostProgressPluginType;
+} as any) as GhostProgressConstructor;

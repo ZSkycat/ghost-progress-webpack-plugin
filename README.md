@@ -1,6 +1,6 @@
 # <div style="text-align: center;">ghost-progress-webpack-plugin</div>
-A progress plugin for `webpack` that can be used with other tools.<br>
-一个能与其他工具一起使用的 `webpack` 进度插件。<br>
+A progress plugin for webpack that can be used with other tools.<br>
+一个能与其他工具一起使用的 webpack 进度插件。<br>
 
 Preview
 ![preview-ghost](https://user-images.githubusercontent.com/20368649/42288692-5ee77a00-7fee-11e8-9480-eeac3469a8a8.gif)
@@ -13,7 +13,7 @@ As a comparison with `webpack.ProgressPlugin`
 - 不能在 CI 环境中使用 (可选择 [simple-progress-webpack-plugin](https://github.com/dominique-mueller/simple-progress-webpack-plugin))
 
 ## Getting Started
-**Installation**
+**Installation** ([npm](https://www.npmjs.com/package/ghost-progress-webpack-plugin))
 ```
 npm install --save-dev ghost-progress-webpack-plugin
 yarn add --dev ghost-progress-webpack-plugin
@@ -32,22 +32,22 @@ plugins: [
 ]
 ```
 
-## Format
+## API
 ```
 new GhostProgressWebpackPlugin(format);
 ```
 
-### format
+#### format
 **Type:** `'compact' | 'detailed' | 'bar'`<br>
 **Default:** `'compact'`<br>
 
-#### `'compact'`
+`'compact'`
 ![format-compact](https://user-images.githubusercontent.com/20368649/42299306-0ae667fa-803d-11e8-984b-967353a51664.gif)
 
-#### `'detailed'`
+`'detailed'`
 ![format-detailed](https://user-images.githubusercontent.com/20368649/42288705-6b298f42-7fee-11e8-8110-73ce4e6eac68.gif)
 
-#### `'bar'`
+`'bar'`
 ![format-bar](https://user-images.githubusercontent.com/20368649/42288706-7026daa4-7fee-11e8-9b76-d2c8064e3f2e.gif)
 
 ## 已知问题
