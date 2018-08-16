@@ -1,11 +1,16 @@
-import * as readline from 'readline';
 import * as cjk from 'cjk-regex';
+import * as readline from 'readline';
+const ansi = require('ansi-regex');
 const cliCursor = require('cli-cursor');
 
 export class Helper {
-    stream = process.stderr;
+    stream: NodeJS.WriteStream;
     xLength = 0;
     yLength = 0;
+
+    constructor(stream: NodeJS.WriteStream) {
+        this.stream = stream;
+    }
 
     clearLine(dir: number) {
         readline.clearLine(this.stream, dir);
@@ -72,13 +77,9 @@ export class Helper {
     }
 }
 
-// https://github.com/chalk/ansi-regex/blob/master/index.js #d9d806ecb45d899cf43408906a4440060c5c50e5
-const ansiPattern = [
-    '[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[a-zA-Z\\d]*)*)?\\u0007)',
-    '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))',
-].join('|');
-const ansiRegex = new RegExp(ansiPattern);
-const ansiRegexG = new RegExp(ansiPattern, 'g');
+// TODO https://github.com/chalk/ansi-regex/pull/24
+const ansiRegexG: RegExp = ansi();
+const ansiRegex = new RegExp(ansiRegexG.source);
 const cjkRegex = cjk().toRegExp();
 
 export function parseDisplayLength(str: string, xLength: number = 0, xMax: number = 128) {
@@ -153,7 +154,8 @@ export function parseDisplayLengthAndLimit(str: string, yLimit: number, xLength:
 
             if (xLength > xMax) {
                 if (yLength + 1 < yLimit) {
-                    xLength -= xMax;
+                    if (xLength - xMax === 0) xLength = 0;
+                    else xLength = 2;
                     yLength += 1;
                 } else {
                     continue;
@@ -180,7 +182,7 @@ export function unhookStdoutWrite() {
     }
 }
 
-// 帮助其他工具清理控制台，避免进度字符的残留
+// 帮助其他程序清理控制台，避免进度字符的残留
 function handleStdoutWrite() {
     let stream = process.stderr;
     let str = arguments[0];

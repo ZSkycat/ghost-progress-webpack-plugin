@@ -1,4 +1,4 @@
-﻿Set-Location $PSScriptRoot
+﻿Set-Location $PSScriptRoot/..
 
 Write-Output '> Set git repository config'
 git.exe config --local core.autocrlf input
