@@ -9,12 +9,12 @@
             "request": "launch",
             "name": "run-test",
             "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "console": "integratedTerminal",
             "args": [
                 "--require",
                 "ts-node/register",
                 "./test/**/*",
             ],
-            "console": "integratedTerminal",
         },
     ],
 }
