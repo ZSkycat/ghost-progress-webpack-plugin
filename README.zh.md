@@ -4,7 +4,7 @@
 
 一个没有副作用的 webpack 进度插件。
 
-语言: [English](https://github.com/ZSkycat/ghost-progress-webpack-plugin) | [中文](https://github.com/ZSkycat/ghost-progress-webpack-plugin/blob/master/README.zh.md)
+语言: [English](https://github.com/ZSkycat/ghost-progress-webpack-plugin#readme) | [中文](https://github.com/ZSkycat/ghost-progress-webpack-plugin/blob/master/README.zh.md)
 
 ## 特色
 - 不会影响其他工具的输出

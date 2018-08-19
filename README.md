@@ -4,7 +4,7 @@
 
 A no side effects progress plugin for webpack.
 
-Languages: [English](https://github.com/ZSkycat/ghost-progress-webpack-plugin) | [中文](https://github.com/ZSkycat/ghost-progress-webpack-plugin/blob/master/README.zh.md)
+Languages: [English](https://github.com/ZSkycat/ghost-progress-webpack-plugin#readme) | [中文](https://github.com/ZSkycat/ghost-progress-webpack-plugin/blob/master/README.zh.md)
 
 ## Feature
 - Will not affect output from other tools
