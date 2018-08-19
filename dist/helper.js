@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const readline = require("readline");
 const cjk = require("cjk-regex");
+const readline = require("readline");
+const ansi = require('ansi-regex');
 const cliCursor = require('cli-cursor');
 class Helper {
-    constructor() {
-        this.stream = process.stderr;
+    constructor(stream) {
         this.xLength = 0;
         this.yLength = 0;
+        this.stream = stream;
     }
     clearLine(dir) {
         readline.clearLine(this.stream, dir);
@@ -65,13 +66,9 @@ class Helper {
     }
 }
 exports.Helper = Helper;
-// https://github.com/chalk/ansi-regex/blob/master/index.js #d9d806ecb45d899cf43408906a4440060c5c50e5
-const ansiPattern = [
-    '[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[a-zA-Z\\d]*)*)?\\u0007)',
-    '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))',
-].join('|');
-const ansiRegex = new RegExp(ansiPattern);
-const ansiRegexG = new RegExp(ansiPattern, 'g');
+// TODO https://github.com/chalk/ansi-regex/pull/24
+const ansiRegexG = ansi();
+const ansiRegex = new RegExp(ansiRegexG.source);
 const cjkRegex = cjk().toRegExp();
 function parseDisplayLength(str, xLength = 0, xMax = 128) {
     let yLength = 0;
@@ -150,7 +147,10 @@ function parseDisplayLengthAndLimit(str, yLimit, xLength = 0, xMax = 128) {
             }
             if (xLength > xMax) {
                 if (yLength + 1 < yLimit) {
-                    xLength -= xMax;
+                    if (xLength - xMax === 0)
+                        xLength = 0;
+                    else
+                        xLength = 2;
                     yLength += 1;
                 }
                 else {
@@ -178,7 +178,7 @@ function unhookStdoutWrite() {
     }
 }
 exports.unhookStdoutWrite = unhookStdoutWrite;
-// 帮助其他工具清理控制台，避免进度字符的残留
+// 帮助其他程序清理控制台，避免进度字符的残留
 function handleStdoutWrite() {
     let stream = process.stderr;
     let str = arguments[0];

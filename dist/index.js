@@ -1,20 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const webpack = require("webpack");
-exports.GhostProgressPlugin = function (arg) {
-    let format = arg ? arg : 'compact';
+const handler_bar_1 = require("./handler-bar");
+const handler_compact_1 = require("./handler-compact");
+const handler_detailed_1 = require("./handler-detailed");
+exports.GhostProgressPlugin = Main;
+function Main(options) {
+    let opt = {
+        format: 'compact',
+        stream: process.stderr,
+    };
+    if (typeof options === 'string')
+        opt.format = options;
+    else
+        Object.assign(opt, options);
     let handler;
-    switch (format) {
+    switch (opt.format) {
+        case 'bar':
+            handler = handler_bar_1.createBar(opt);
+            break;
         case 'compact':
-            handler = require('./handler-compact').default();
+            handler = handler_compact_1.createCompact(opt);
             break;
         case 'detailed':
-            handler = require('./handler-detailed').default();
+            handler = handler_detailed_1.createDetailed(opt);
             break;
-        case 'bar':
-            handler = require('./handler-bar').default();
-            break;
+        default:
+            throw new Error('Can not find options.format.');
     }
     return new webpack.ProgressPlugin(handler);
-};
+}
 //# sourceMappingURL=index.js.map

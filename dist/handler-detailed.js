@@ -5,8 +5,8 @@ const helper_1 = require("./helper");
 // format:
 // [00.00%] msg
 // moduleProgress :: activeModules :: moduleName
-function default_1() {
-    let helper = new helper_1.Helper();
+function createDetailed(options) {
+    let helper = new helper_1.Helper(options.stream);
     return function (percentage, msg, moduleProgress, activeModules, moduleName) {
         if (percentage === 0)
             helper.begin();
@@ -21,5 +21,5 @@ function default_1() {
         helper.endWrite();
     };
 }
-exports.default = default_1;
+exports.createDetailed = createDetailed;
 //# sourceMappingURL=handler-detailed.js.map

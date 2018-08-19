@@ -2,23 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const chalk_1 = require("chalk");
 const helper_1 = require("./helper");
-const spinner = ['-', '\\', '|', '/'];
-function createBarStr(percent, length = 100, fgColor = 'bgCyan', bgColor = 'bgBlackBright') {
-    if (process.stdout.columns && process.stdout.columns < length + 2) {
-        length = process.stdout.columns - 2;
-    }
-    let fgLength = Math.round(percent * length);
-    let bgLength = length - fgLength;
-    return chalk_1.default[fgColor](' '.repeat(fgLength)) + chalk_1.default[bgColor](' '.repeat(bgLength));
-}
-function createSpinnerStr(index, color = 'cyan') {
-    index = index % spinner.length;
-    return chalk_1.default[color](spinner[index]);
-}
 // format:
 // * █████_____
-function default_1() {
-    let helper = new helper_1.Helper();
+function createBar(options) {
+    let helper = new helper_1.Helper(options.stream);
     let index = 0;
     return function (percentage, msg, moduleProgress, activeModules, moduleName) {
         if (percentage === 0)
@@ -34,5 +21,18 @@ function default_1() {
         helper.endWrite();
     };
 }
-exports.default = default_1;
+exports.createBar = createBar;
+function createBarStr(percent, length = 100, fgColor = 'bgCyan', bgColor = 'bgBlackBright') {
+    if (process.stdout.columns && process.stdout.columns < length + 2) {
+        length = process.stdout.columns - 2;
+    }
+    let fgLength = Math.round(percent * length);
+    let bgLength = length - fgLength;
+    return chalk_1.default[fgColor](' '.repeat(fgLength)) + chalk_1.default[bgColor](' '.repeat(bgLength));
+}
+const spinner = ['-', '\\', '|', '/'];
+function createSpinnerStr(index, color = 'cyan') {
+    index = index % spinner.length;
+    return chalk_1.default[color](spinner[index]);
+}
 //# sourceMappingURL=handler-bar.js.map

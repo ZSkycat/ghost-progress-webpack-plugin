@@ -1,8 +1,8 @@
 {
     "name": "ghost-progress-webpack-plugin",
-    "version": "0.0.4",
+    "version": "0.1.0",
     "author": "ZSkycat",
-    "description": "A progress plugin for webpack that can be used with other tools.",
+    "description": "A no side effects progress plugin for webpack.",
     "license": "MIT",
     "keywords": [
         "webpack",

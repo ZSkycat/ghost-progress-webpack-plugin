@@ -3,6 +3,7 @@ export declare class Helper {
     stream: NodeJS.WriteStream;
     xLength: number;
     yLength: number;
+    constructor(stream: NodeJS.WriteStream);
     clearLine(dir: number): void;
     cursorTo(x: number, y?: number): void;
     moveCursor(dx: number, dy?: number): void;
