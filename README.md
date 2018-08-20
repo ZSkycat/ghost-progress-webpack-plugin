@@ -31,7 +31,8 @@ plugins: [
 ```
 
 ## API
-```
+```typescript
+new GhostProgressWebpackPlugin();
 new GhostProgressWebpackPlugin(format: string);
 new GhostProgressWebpackPlugin(options: object);
 ```

@@ -9,8 +9,10 @@
         // feature
         "declaration": true,
         "sourceMap": true,
+        "resolveJsonModule": true,
         // type check
         "strict": true,
+        "lib": ["esnext"],
     },
     "include": [
         "./src/**/*",

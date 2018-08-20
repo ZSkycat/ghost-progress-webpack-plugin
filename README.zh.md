@@ -9,7 +9,7 @@
 ## 特色
 - 不会影响其他工具的输出
 - 不会留下丑陋的输出
-- 不适合在 CI 环境中使用 (可使用 [simple-progress-webpack-plugin](https://github.com/dominique-mueller/simple-progress-webpack-plugin))
+- 不适合在 CI 环境中使用（可使用 [simple-progress-webpack-plugin](https://github.com/dominique-mueller/simple-progress-webpack-plugin)）
 
 ![preview-ghost](https://user-images.githubusercontent.com/20368649/42288692-5ee77a00-7fee-11e8-9480-eeac3469a8a8.gif)
 
@@ -31,7 +31,8 @@ plugins: [
 ```
 
 ## API
-```
+```typescript
+new GhostProgressWebpackPlugin();
 new GhostProgressWebpackPlugin(format: string);
 new GhostProgressWebpackPlugin(options: object);
 ```
